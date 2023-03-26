@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+
+ /* --- INDEX PAGE --- */
+
+body {
+  background-color: #282B28;
+}
+
+.page {
+  background-color: #83BCA9;
+}
+
+h1, h4, a, a:hover {
+  color: #282B28;
+}
+
+button a, button a:hover  {
+  color: white;
+}
+
+.wrap {
+  word-wrap: break-word;
+}
