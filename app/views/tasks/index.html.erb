@@ -20,7 +20,7 @@
         <%= link_to "Add new task", new_task_path %>
       </button>
       <button class="btn btn-success d-none" id="completed-button" data-checklist-target="button" data-action="click->checklist#complete">
-        Complete
+        <%= link_to "Complete", tasks_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
       </button>
     </div>
 
@@ -28,4 +28,3 @@
 
 </div>
 
-<%# <%= link_to task_path(task.id), data: {turbo_method: :delete, turbo_confirm: "Delete #{task.title}?"} do %>

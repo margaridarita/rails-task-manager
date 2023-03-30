@@ -22,7 +22,8 @@ Rails.application.routes.draw do
   # Delete
   delete 'tasks/:id', to: 'tasks#destroy'
 
-  patch 'tasks/:id/toggle_completed', to: 'tasks#toggle_completed'
+  delete '/tasks/destroy_checked_tasks', to: 'tasks#destroy_checked_tasks'
+
 end
 
 # resources :tasks

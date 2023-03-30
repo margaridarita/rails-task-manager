@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :toggle_completed]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :destroy_checked_tasks]
 
   def index
     @tasks = Task.all
@@ -34,10 +34,15 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
-  def toggle_completed
-    raise
-    @task.update(completed: !@task.completed)
-    render json: { completed: @task.completed }
+  # def toggle_completed
+  #   raise
+  #   @task.update(completed: !@task.completed)
+  #   render json: { completed: @task.completed }
+  # end
+
+  def destroy_checked_tasks
+    Task.where(id: params[:task_ids]).destroy_all
+    redirect_to tasks_path
   end
 
   private
