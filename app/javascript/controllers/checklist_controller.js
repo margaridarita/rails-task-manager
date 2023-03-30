@@ -33,6 +33,7 @@ export default class extends Controller {
   complete() {
     const url = "/tasks/destroy_checked_tasks";
     const data = { task_ids: this.checkedTasks };
+    console.log("complete");
 
     fetch(url, {
 			method: "DELETE",
@@ -41,6 +42,7 @@ export default class extends Controller {
 			},
 			body: JSON.stringify({ data }),
 		}).then(() => {
+      console.log("poop");
 			window.location.reload();
 		});
   }

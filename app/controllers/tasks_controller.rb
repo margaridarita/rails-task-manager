@@ -41,8 +41,9 @@ class TasksController < ApplicationController
   # end
 
   def destroy_checked_tasks
+    raise
     Task.where(id: params[:task_ids]).destroy_all
-    redirect_to tasks_path
+    redirect_to tasks_path, status: :see_other
   end
 
   private
