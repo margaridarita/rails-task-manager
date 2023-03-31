@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-
   get '/', to: redirect('/tasks'), as: 'tasks_redirect'
 
   # Read all
@@ -22,8 +21,6 @@ Rails.application.routes.draw do
   # Delete
   delete 'tasks/:id', to: 'tasks#destroy'
 
-  delete '/tasks/destroy_checked_tasks', to: 'tasks#destroy_checked_tasks'
+  post '/delete_ids', to: 'tasks#delete_ids'
 
 end
-
-# resources :tasks

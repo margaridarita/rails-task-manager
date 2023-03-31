@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :destroy_checked_tasks]
+  protect_from_forgery with: :exception
+  before_action :set_task, only: %i[show edit update destroy]
 
   def index
     @tasks = Task.all
@@ -34,16 +35,11 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
-  # def toggle_completed
-  #   raise
-  #   @task.update(completed: !@task.completed)
-  #   render json: { completed: @task.completed }
-  # end
-
-  def destroy_checked_tasks
-    raise
-    Task.where(id: params[:task_ids]).destroy_all
-    redirect_to tasks_path, status: :see_other
+  def delete_ids
+    ids = params[:task_ids]
+    puts ids.inspect
+    ids.each { |id| Task.where(id: id).destroy unless id.nil? }
+    head :no_content
   end
 
   private
@@ -55,5 +51,4 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:title, :details, :completed)
   end
-
 end
