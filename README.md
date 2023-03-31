@@ -1,24 +1,5 @@
-# README
+# Rails Task Manager
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This was an exercise made at Le Wagon when I started using rails, to undertand Models and CRUD. It is a task list where users can add their tasks. 
+I've grabbed this exercise again to practice JavaScript and decided to add the tasks as a checklist, where the user should be able to select several tasks and then delete them by pressing a "complete" button.
+However it's still a WIP because the fetch request isn't being correctly transmitted to the tasks controller. 
