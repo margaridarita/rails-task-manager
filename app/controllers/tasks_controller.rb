@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy]
 
   def index
-    @tasks = Task.all
+    @tasks = Task.where(completed: false)
   end
 
   def show
@@ -35,11 +35,12 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
-  def delete_ids
-    ids = params[:task_ids]
-    puts ids.inspect
-    ids.each { |id| Task.where(id: id).destroy unless id.nil? }
-    head :no_content
+  def bulk_update
+    @completed_tasks = Task.where(id: params.fetch(:task_ids, []).compact)
+    if params[:commit] == 'Complete'
+      @completed_tasks.update_all(completed: true)
+    end
+    redirect_to action: :index
   end
 
   private
