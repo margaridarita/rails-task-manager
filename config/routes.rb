@@ -1,26 +1,30 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  get '/', to: redirect('/tasks'), as: 'tasks_redirect'
+  # # Defines the root path route ("/")
+  # get '/', to: redirect('/tasks'), as: 'tasks_redirect'
 
-  # Read all
-  get 'tasks', to: 'tasks#index'
+  # # Read all
+  # get 'tasks', to: 'tasks#index'
 
-  # Create
-  get 'tasks/new', to: 'tasks#new', as: :new_task
-  post 'tasks', to: 'tasks#create'
+  # # Create
+  # get 'tasks/new', to: 'tasks#new', as: :new_task
+  # post 'tasks', to: 'tasks#create'
 
-  # Read one
-  get 'tasks/:id', to: 'tasks#show', as: 'task'
+  # # Read one
+  # get 'tasks/:id', to: 'tasks#show', as: 'task'
 
-  # Update
-  get 'tasks/:id/edit', to: 'tasks#edit', as: 'edit_task'
-  patch 'tasks/:id', to: 'tasks#update'
+  # # Update
+  # get 'tasks/:id/edit', to: 'tasks#edit', as: 'edit_task'
+  # patch 'tasks/:id', to: 'tasks#update'
 
-  # Delete
-  delete 'tasks/:id', to: 'tasks#destroy'
+  # # Delete
+  # delete 'tasks/:id', to: 'tasks#destroy'
 
-  post '/delete_ids', to: 'tasks#delete_ids'
-
+  resources :tasks do
+    collection do
+      patch :bulk_update
+    end
+  end
+  root 'tasks#index'
 end

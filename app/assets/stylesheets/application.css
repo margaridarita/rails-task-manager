@@ -35,3 +35,9 @@ button a, button a:hover  {
 .wrap {
   word-wrap: break-word;
 }
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding:0;
+}

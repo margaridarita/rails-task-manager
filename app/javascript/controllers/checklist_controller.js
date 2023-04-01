@@ -29,7 +29,7 @@ export default class extends Controller {
   }
 
   complete() {
-    const ids = this.checkedTasks;
+    const ids = this.checkedTasks.map(id => parseInt(id));
     console.log('ids:', ids);
     fetch('/delete_ids', {
       method: 'POST',
