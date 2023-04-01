@@ -4,16 +4,11 @@
 
     <div data-controller="checklist">
 
-      <%= form_with url: bulk_update_tasks_path, method: :patch, id: :bulk_actions_form  do |form| %>
-        <%= form.submit "open"%>
-        <%= form.submit "complete" %>
-      <% end %>
-
       <div class="my-4">
         <ul>
           <% @tasks.each do |task| %>
             <li>
-              <%= check_box_tag "task_ids[]", task.id, nil, { multiple: true, form: :bulk_actions_form } %>
+              <%= check_box_tag "task_ids[]", task.id, nil, { multiple: true, form: :bulk_actions_form, data: { checklist_target: 'checkbox', action: 'change->checklist#check' } } %>
               <%= link_to task.title, task_path(task) %>
             </li>
           <% end %>
@@ -24,9 +19,9 @@
         <button class="btn btn-dark">
           <%= link_to "Add new task", new_task_path %>
         </button>
-        <button class="btn btn-success d-none" id="completed-button" type="button" data-checklist-target="button" data-action="click->checklist#complete">
-          Complete
-        </button>
+        <%= form_with url: bulk_update_tasks_path, method: :patch, id: :bulk_actions_form do |form| %>
+          <%= form.submit "Complete", class: 'btn btn-success d-none', id: 'button', data: { checklist_target: 'button' }%>
+        <% end %>
       </div>
 
     </div>

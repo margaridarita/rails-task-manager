@@ -10,9 +10,10 @@ export default class extends Controller {
 	}
 
   check(event) {
-    console.dir(event.target);
+    console.dir(event);
     const checkbox = event.target;
-    const taskId = checkbox.id.split("-").pop();
+    const taskId = checkbox.value;
+    console.log(taskId);
 
     if (checkbox.checked) {
       this.checkedTasks.push(taskId)
@@ -20,7 +21,8 @@ export default class extends Controller {
       this.checkedTasks = this.checkedTasks.filter((id) => id !== taskId)
     };
 
-    console.log("checkedTasks", this.checkedTasks);
+    console.log(this.checkedTasks);
+
     if (this.checkedTasks.length > 0) {
       this.buttonTarget.classList.remove('d-none');
     } else {
@@ -28,15 +30,4 @@ export default class extends Controller {
     };
   }
 
-  complete() {
-    const ids = this.checkedTasks.map(id => parseInt(id));
-    console.log('ids:', ids);
-    fetch('/delete_ids', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ task_ids: ids })
-    })
-    .then(response => response.json())
-    .then(data => console.log(data));
-  }
 }
