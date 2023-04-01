@@ -1,5 +1,8 @@
 # Rails Task Manager
 
-This was an exercise made at Le Wagon when I started using rails, to undertand Models and CRUD. It is a task list where users can add their tasks. 
-I've grabbed this exercise again to practice JavaScript and decided to add the tasks as a checklist, where the user should be able to select several tasks and then delete them by pressing a "complete" button.
-However it's still a WIP because the fetch request isn't being correctly transmitted to the tasks controller. 
+This exercise was done when learning Models and CRUD on rails. It's a task list manager where the user can add and edit tasks. I've also user JavaScript and Stimulus to allow the user to bulk update tasks to complete. 
+
+![image](https://user-images.githubusercontent.com/110779743/229280911-35a3afe2-ee45-4115-9666-e449b02421e6.png)
+
+![image](https://user-images.githubusercontent.com/110779743/229280948-0ef9b22e-eb77-4c96-9bc0-99ebe525d87b.png)
+
